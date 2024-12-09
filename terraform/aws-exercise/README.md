@@ -110,7 +110,7 @@ Same AWS architecture as used in Exercise 2. This exercise demonstrates a differ
 
 Create an advanced AWS VPC to host a fully functioning cloud native application.
 
-![Cloud Native Application](/doc/voteapp.png)
+![Cloud Native Application](./doc/voteapp.png)
 
 The VPC will span 2 AZs, and have both public and private subnets. An internet gateway and NAT gateway will be deployed into it. Public and private route tables will be established. An application load balancer (ALB) will be installed which will load balance traffic across an auto scaling group (ASG) of Nginx web servers installed with the cloud native application frontend and API. A database instance running MongoDB will be installed in the private zone. Security groups will be created and deployed to secure all network traffic between the various components.
 
@@ -118,7 +118,7 @@ For demonstration purposes only - both the frontend and the API will be deployed
 
 <https://github.com/cloudacademy/terraform-aws/tree/main/exercises/exercise4>
 
-![AWS Architecture](/doc/AWS-VPC-FullApp.png)
+![AWS Architecture](./doc/AWS-VPC-FullApp.png)
 
 The auto scaling web application layer bootstraps itself with both the [Frontend](https://github.com/cloudacademy/voteapp-frontend-react-2020) and [API](https://github.com/cloudacademy/voteapp-api-go) components by pulling down their **latest** respective releases from the following repos:
 
@@ -186,7 +186,7 @@ data "template_cloudinit_config" "config" {
 
 The ALB will configured with a single listener (port 80). 2 target groups will be established. The frontend target group points to the Nginx web server (port 80). The API target group points to the custom API service (port 8080).
 
-![AWS Architecture](/doc/AWS-VPC-FullApp-TargetGrps.png)
+![AWS Architecture](./doc/AWS-VPC-FullApp-TargetGrps.png)
 
 #### Project Structure
 
@@ -238,7 +238,7 @@ The ALB will configured with a single listener (port 80). 2 target groups will b
 
 Refactoring of the Cloud Native Application (excercise 4) to use [Ansible](https://www.ansible.com/) for configuration management.
 
-![Cloud Native Application](/doc/voteapp.png)
+![Cloud Native Application](./doc/voteapp.png)
 
 The VPC will span 2 AZs, and have both public and private subnets. An internet gateway and NAT gateway will be deployed into it. Public and private route tables will be established. An application load balancer (ALB) will be installed which will load balance traffic across an auto scaling group (ASG) of Nginx web servers installed with the cloud native application frontend and API. A database instance running MongoDB will be installed in the private zone. Security groups will be created and deployed to secure all network traffic between the various components.
 
@@ -246,7 +246,7 @@ For demonstration purposes only - both the frontend and the API will be deployed
 
 <https://github.com/cloudacademy/terraform-aws/tree/main/exercises/exercise5>
 
-![AWS Architecture](/doc/AWS-VPC-FullApp.png)
+![AWS Architecture](./doc/AWS-VPC-FullApp.png)
 
 The auto scaling web application layer bootstraps itself with both the [Frontend](https://github.com/cloudacademy/voteapp-frontend-react-2020) and [API](https://github.com/cloudacademy/voteapp-api-go) components by pulling down their **latest** respective releases from the following repos:
 
@@ -300,7 +300,7 @@ resource "null_resource" "ansible" {
 
 The ALB will configured with a single listener (port 80). 2 target groups will be established. The frontend target group points to the Nginx web server (port 80). The API target group points to the custom API service (port 8080).
 
-![AWS Architecture](/doc/AWS-VPC-FullApp-TargetGrps.png)
+![AWS Architecture]./doc/AWS-VPC-FullApp-TargetGrps.png)
 
 #### Project Structure
 
@@ -367,7 +367,7 @@ The ALB will configured with a single listener (port 80). 2 target groups will b
 
 Launch an EKS cluster and deploy a pre-built cloud native web app.
 
-![Stocks App](/doc/stocks.png)
+![Stocks App](./doc/stocks.png)
 
 The following EKS architecture will be provisioned using Terraform:
 
@@ -453,11 +453,11 @@ resource "helm_release" "nginx_ingress" {
 
 Deploy a set of serverless apps using API Gateway and Lambda Functions.
 
-![Stocks App](/doc/stocks.png)
+![Stocks App](./doc/stocks.png)
 
 The following EKS architecture will be provisioned using Terraform:
 
-![EKS Cloud Native Application](/doc/eks.png)
+![EKS Cloud Native Application](./doc/eks.png)
 
 The cloud native web app that gets deployed is based on the following codebase:
 
