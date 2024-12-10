@@ -1,3 +1,12 @@
+terraform {
+  required_version = ">= 1.4.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.0.0"
+    }
+  }
+}
 resource "aws_security_group" "sg_elb" {
   name        = var.alb_security_group_name
   description = "Allow HTTP and HTTPS traffic to ELB"

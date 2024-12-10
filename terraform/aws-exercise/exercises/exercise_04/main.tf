@@ -1,13 +1,3 @@
-terraform {
-  required_version = ">= 1.5"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
 provider "aws" {
   region = var.region
 }
@@ -48,27 +38,15 @@ module "database" {
   sg_database   = [module.security_groups.sg_database]
 }
 
-# module "application" {
-#   source             = "./modules/application"
-#   ami_id             = var.ami
-#   vpc_id             = module.network.vpc_id
-#   instance_type      = var.instance_type
-#   key_pair_path      = aws_key_pair.tran_ngoc_tinh.key_name
-#   sg_application     = [module.security_groups.sg_backend, module.security_groups.sg_fontend]
-#   alb_target_group   = module.load_balancer.alb_target_group
-#   private_subnet_ids = module.network.private_subnets
-# }
-
-
-# module "load_balancer" {
-#   source                   = "./modules/load_balancer/"
-#   key_pair_path            = aws_key_pair.tran_ngoc_tinh.key_name
-#   sg_elb      = module.security_groups.sg_elb
-#   public_subnet_ids        = module.network.public_subnets
-#   azs                      = var.azs
-#   vpc_id                   = module.network.vpc_id
-#   mongodb_ip               = module.database.private_ip
-#   instance-security_groups = [module.security_groups.sg_backend, module.security_groups.sg_fontend]
-#   private_subnet_ids       = module.network.private_subnets
-#   alb_target_group         = "alb-target-group"
-# }
+module "application" {
+  source             = "./modules/application"
+  public_subnet_ids  = module.network.public_subnets
+  private_subnet_ids = module.network.private_subnets
+  vpc_id             = module.network.vpc_id
+  key_pair_path      = aws_key_pair.tran_ngoc_tinh.key_name
+  sg_application     = [module.security_groups.sg_application]
+  alb_target_group   = module.load_balancer.target_group_arn
+  sg_elb             = [module.security_groups.sg_elb]
+  azs                = var.azs
+  mongodb_ip = module.database.private_ip
+}
